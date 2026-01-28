@@ -38,11 +38,10 @@ struct SingleRingView:View {
                 let center = CGPoint(x: geometry.size.width / 2, y: geometry.size.height / 2)
                 
                 ZStack {
-                    // 2. Background for the ring
                     RingShape()
                         .stroke(style: StrokeStyle(lineWidth: self.ringWidth))
                         .fill(model.backgroundColor)
-                    // 3. Foreground
+                    
                     RingShape(percent: model.percent, startAngle: self.startAngle)
                         .stroke(style: StrokeStyle(lineWidth: self.ringWidth, lineCap: .round))
                         .fill(model.foregroundColor)

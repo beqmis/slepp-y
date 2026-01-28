@@ -6,11 +6,27 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		DA7322CA2F2A7B9A00E37905 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA9110A72F26A9F600D8C596 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA9110AE2F26A9F600D8C596;
+			remoteInfo = "slepp'y";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		DA7322C62F2A7B9A00E37905 /* slepp'yTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "slepp'yTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA9110AF2F26A9F600D8C596 /* slepp'y.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "slepp'y.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		DA7322C72F2A7B9A00E37905 /* slepp'yTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "slepp'yTests";
+			sourceTree = "<group>";
+		};
 		DA9110B12F26A9F600D8C596 /* slepp'y */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "slepp'y";
@@ -19,6 +35,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DA7322C32F2A7B9A00E37905 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DA9110AC2F26A9F600D8C596 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				DA9110B12F26A9F600D8C596 /* slepp'y */,
+				DA7322C72F2A7B9A00E37905 /* slepp'yTests */,
 				DA9110B02F26A9F600D8C596 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				DA9110AF2F26A9F600D8C596 /* slepp'y.app */,
+				DA7322C62F2A7B9A00E37905 /* slepp'yTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +73,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		DA7322C52F2A7B9A00E37905 /* slepp'yTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA7322CE2F2A7B9A00E37905 /* Build configuration list for PBXNativeTarget "slepp'yTests" */;
+			buildPhases = (
+				DA7322C22F2A7B9A00E37905 /* Sources */,
+				DA7322C32F2A7B9A00E37905 /* Frameworks */,
+				DA7322C42F2A7B9A00E37905 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DA7322CB2F2A7B9A00E37905 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				DA7322C72F2A7B9A00E37905 /* slepp'yTests */,
+			);
+			name = "slepp'yTests";
+			packageProductDependencies = (
+			);
+			productName = "slepp'yTests";
+			productReference = DA7322C62F2A7B9A00E37905 /* slepp'yTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		DA9110AE2F26A9F600D8C596 /* slepp'y */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA9110BA2F26A9F700D8C596 /* Build configuration list for PBXNativeTarget "slepp'y" */;
@@ -80,6 +128,10 @@
 				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
+					DA7322C52F2A7B9A00E37905 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = DA9110AE2F26A9F600D8C596;
+					};
 					DA9110AE2F26A9F600D8C596 = {
 						CreatedOnToolsVersion = 26.2;
 					};
@@ -100,11 +152,19 @@
 			projectRoot = "";
 			targets = (
 				DA9110AE2F26A9F600D8C596 /* slepp'y */,
+				DA7322C52F2A7B9A00E37905 /* slepp'yTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DA7322C42F2A7B9A00E37905 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DA9110AD2F26A9F600D8C596 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,6 +175,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DA7322C22F2A7B9A00E37905 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DA9110AB2F26A9F600D8C596 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,7 +191,62 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		DA7322CB2F2A7B9A00E37905 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA9110AE2F26A9F600D8C596 /* slepp'y */;
+			targetProxy = DA7322CA2F2A7B9A00E37905 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		DA7322CC2F2A7B9A00E37905 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YAZBD795D4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ykvdmdnk.slepp-yTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/slepp'y.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/slepp'y";
+			};
+			name = Debug;
+		};
+		DA7322CD2F2A7B9A00E37905 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YAZBD795D4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ykvdmdnk.slepp-yTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/slepp'y.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/slepp'y";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		DA9110B82F26A9F700D8C596 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -244,12 +366,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "slepp'y/slepp'y.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YAZBD795D4;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "slepp-y/Info.plist";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "To read the health data and show it in the application.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -286,12 +413,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "slepp'y/slepp'y.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YAZBD795D4;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "slepp-y/Info.plist";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "To read the health data and show it in the application.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -326,6 +458,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DA7322CE2F2A7B9A00E37905 /* Build configuration list for PBXNativeTarget "slepp'yTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA7322CC2F2A7B9A00E37905 /* Debug */,
+				DA7322CD2F2A7B9A00E37905 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DA9110AA2F26A9F600D8C596 /* Build configuration list for PBXProject "slepp'y" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

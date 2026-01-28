@@ -12,10 +12,10 @@ class RingsViewModel:ObservableObject
     @Published var coreRing:RingTypeModel
     @Published var deepRing:RingTypeModel
     @Published var remRing:RingTypeModel
-
-    private let sleepService:SleepServiceProtocol
     
-    init(sleepService:SleepServiceProtocol) {
+    private let sleepService:SleepServiceProtocol & SleepAuthorizationProtocol
+    
+    init(sleepService:SleepServiceProtocol & SleepAuthorizationProtocol) {
         self.sleepService = sleepService
         
         self.coreRing = RingTypeModel(percent: 0, backgroundColor: .cyan.opacity(0.2), foregroundColor: .cyan)
@@ -25,15 +25,19 @@ class RingsViewModel:ObservableObject
     
     @MainActor
     func updateRings() async {
-        let data = await sleepService.fetchSleepData()
         
-        withAnimation(.spring()) {
-                    coreRing.percent = data.core
-                    deepRing.percent = data.deep
-                    remRing.percent = data.rem
-                }
+        let access = await sleepService.requestAuthorization()
+        if access {
+            let data = await sleepService.fetchSleepData()
+            
+            withAnimation(.spring()) {
+                coreRing.percent = data.core
+                deepRing.percent = data.deep
+                remRing.percent = data.rem
+            }
+        }
+        
+        
     }
-    
-    
     
 }
