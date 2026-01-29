@@ -18,9 +18,9 @@ class RingsViewModel:ObservableObject
     init(sleepService:SleepServiceProtocol & SleepAuthorizationProtocol) {
         self.sleepService = sleepService
         
-        self.coreRing = RingTypeModel(percent: 0, backgroundColor: .cyan.opacity(0.2), foregroundColor: .cyan)
-        self.remRing = RingTypeModel(percent: 0, backgroundColor: .purple.opacity(0.2), foregroundColor: .purple)
-        self.deepRing = RingTypeModel(percent: 0, backgroundColor: .blue.opacity(0.2), foregroundColor: .blue)
+        self.coreRing = RingTypeModel(percent: 0, backgroundColor: .blue.opacity(0.2), foregroundColor: .blue)
+        self.remRing = RingTypeModel(percent: 0, backgroundColor: .cyan.opacity(0.2), foregroundColor: .cyan)
+        self.deepRing = RingTypeModel(percent: 0, backgroundColor: .indigo.opacity(0.2), foregroundColor: .indigo)
     }
     
     @MainActor

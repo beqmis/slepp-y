@@ -12,9 +12,9 @@ struct MainView:View
     @StateObject var viewModel:RingsViewModel
     let sizer:Double = 0.75
     
-    let coreColor = Color.cyan
-    let remColor = Color.purple
-    let deepColor = Color.blue
+    let coreColor = Color.blue
+    let remColor = Color.cyan
+    let deepColor = Color.indigo
     
     var body: some View {
         VStack(spacing: 30) {
@@ -72,7 +72,7 @@ struct MainView:View
             sleepRingView
             
             VStack(alignment: .leading, spacing: 16) {
-                statRow(title: "Core", value: viewModel.coreRing.percent, color: coreColor, icon: "cpu")
+                statRow(title: "Core", value: viewModel.coreRing.percent, color: coreColor, icon: "zzz")
                 statRow(title: "Rem", value: viewModel.remRing.percent, color: remColor, icon: "eye")
                 statRow(title: "Deep", value: viewModel.deepRing.percent, color: deepColor, icon: "moon.stars.fill")
             }
@@ -105,7 +105,6 @@ extension Date {
     func format(_ format: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format
-//        formatter.locale = Locale(identifier: "en_US")
         return formatter.string(from: self)
     }
 }
