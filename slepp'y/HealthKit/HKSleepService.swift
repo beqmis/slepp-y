@@ -11,7 +11,7 @@ class HKSleepService: SleepServiceProtocol,SleepAuthorizationProtocol {
     private let helthStore = HKHealthStore()
     private let sleepType = HKCategoryType(.sleepAnalysis)
     
-    func fetchSleepData() async -> (core: Double, deep: Double, rem: Double) {
+    func fetchSleepData() async -> (core: Double, rem: Double, deep: Double) {
         
         guard HKHealthStore.isHealthDataAvailable() else {return (0, 0, 0)}
         
@@ -29,8 +29,8 @@ class HKSleepService: SleepServiceProtocol,SleepAuthorizationProtocol {
             let results = try await descriptor.result(for: helthStore)
             
             var core: Double = 0
-            var deep: Double = 0
             var rem: Double = 0
+            var deep: Double = 0
             
             for result in results {
                 guard let sleepSample = result as? HKCategorySample else {continue}
@@ -46,10 +46,10 @@ class HKSleepService: SleepServiceProtocol,SleepAuthorizationProtocol {
                     rem += duration
                 default: break
                 }
-                
             }
-            print(core, deep, rem)
-            return (core, deep, rem)
+            print(minutes2percent(core: core, rem: rem, deep: deep))
+            return minutes2percent(core: core, rem: rem, deep: deep)
+
         }
         catch {
             print("Ошибка загрузки данных сна: \(error.localizedDescription)")
@@ -67,11 +67,20 @@ class HKSleepService: SleepServiceProtocol,SleepAuthorizationProtocol {
                 return false
             }
     }
+    func minutes2percent(core: Double, rem: Double, deep: Double) -> (Double,Double,Double) {
+        let sleepTime: Double = 480
+        
+//        let avg_core: Double = 0.55
+//        let avg_rem: Double = 0.25
+//        let avg_deep: Double = 0.20
+        
+        return ((core/sleepTime)*100, (rem/sleepTime)*100, (deep/sleepTime)*100)
+    }
 }
 
 
 protocol SleepServiceProtocol {
-    func fetchSleepData() async -> (core: Double, deep: Double, rem: Double)
+    func fetchSleepData() async -> (core: Double, rem: Double, deep: Double)
 }
 
 protocol SleepAuthorizationProtocol {

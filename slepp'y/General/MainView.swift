@@ -17,10 +17,10 @@ struct MainView:View
                 SingleRingView(model: viewModel.coreRing, ringWidth: 40)
                     .frame(width: 300, height: 300)
                 
-                SingleRingView(model: viewModel.deepRing, ringWidth: 40)
+                SingleRingView(model: viewModel.remRing, ringWidth: 40)
                     .frame(width: 218, height: 218)
                 
-                SingleRingView(model: viewModel.remRing, ringWidth: 40)
+                SingleRingView(model: viewModel.deepRing, ringWidth: 40)
                     .frame(width: 136, height: 136)
             }
             .onAppear {

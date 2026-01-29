@@ -19,8 +19,8 @@ class RingsViewModel:ObservableObject
         self.sleepService = sleepService
         
         self.coreRing = RingTypeModel(percent: 0, backgroundColor: .cyan.opacity(0.2), foregroundColor: .cyan)
-        self.deepRing = RingTypeModel(percent: 0, backgroundColor: .blue.opacity(0.2), foregroundColor: .blue)
         self.remRing = RingTypeModel(percent: 0, backgroundColor: .purple.opacity(0.2), foregroundColor: .purple)
+        self.deepRing = RingTypeModel(percent: 0, backgroundColor: .blue.opacity(0.2), foregroundColor: .blue)
     }
     
     @MainActor
@@ -31,9 +31,9 @@ class RingsViewModel:ObservableObject
             let data = await sleepService.fetchSleepData()
             
             withAnimation(.spring()) {
-                coreRing.percent = data.core
-                deepRing.percent = data.deep
-                remRing.percent = data.rem
+                coreRing.percent = data.core * 1.81
+                remRing.percent = data.rem * 4
+                deepRing.percent = data.deep * 5
             }
         }
         
