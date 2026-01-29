@@ -70,10 +70,6 @@ class HKSleepService: SleepServiceProtocol,SleepAuthorizationProtocol {
     func minutes2percent(core: Double, rem: Double, deep: Double) -> (Double,Double,Double) {
         let sleepTime: Double = 480
         
-//        let avg_core: Double = 0.55
-//        let avg_rem: Double = 0.25
-//        let avg_deep: Double = 0.20
-        
         return ((core/sleepTime)*100, (rem/sleepTime)*100, (deep/sleepTime)*100)
     }
 }
