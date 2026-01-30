@@ -24,11 +24,11 @@ class RingsViewModel:ObservableObject
     }
     
     @MainActor
-    func updateRings() async {
+    func updateRings(selectedDate: Date) async {
         
         let access = await sleepService.requestAuthorization()
         if access {
-            let data = await sleepService.fetchSleepData()
+            let data = await sleepService.fetchSleepData(endDate: selectedDate)
             
             withAnimation(.spring().speed(0.5)) {
                 coreRing.percent = data.core * 1.81 //   (8h/percent of this type)

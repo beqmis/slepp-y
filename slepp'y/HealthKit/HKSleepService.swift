@@ -11,12 +11,11 @@ class HKSleepService: SleepServiceProtocol,SleepAuthorizationProtocol {
     private let helthStore = HKHealthStore()
     private let sleepType = HKCategoryType(.sleepAnalysis)
     
-    func fetchSleepData() async -> (core: Double, rem: Double, deep: Double) {
+    func fetchSleepData(endDate: Date) async -> (core: Double, rem: Double, deep: Double) {
         
         guard HKHealthStore.isHealthDataAvailable() else {return (0, 0, 0)}
         
         let calendar = Calendar.current
-        let endDate = Date()
         let startDate = calendar.startOfDay(for: endDate)
         
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
@@ -76,7 +75,7 @@ class HKSleepService: SleepServiceProtocol,SleepAuthorizationProtocol {
 
 
 protocol SleepServiceProtocol {
-    func fetchSleepData() async -> (core: Double, rem: Double, deep: Double)
+    func fetchSleepData(endDate:Date) async -> (core: Double, rem: Double, deep: Double)
 }
 
 protocol SleepAuthorizationProtocol {

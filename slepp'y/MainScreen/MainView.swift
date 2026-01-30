@@ -35,6 +35,9 @@ struct MainView:View
                 .zIndex(1)
             }
         }
+        .task {
+            await ringVM.updateRings(selectedDate: mainVM.selectedDate)
+        }
     }
     
     private func statRow(title: String, value: Double, color: Color, icon: String) -> some View {
@@ -80,7 +83,7 @@ struct MainView:View
                     .font(.system(.title, design: .rounded))
                     .bold()
                 
-                Text(Date.now.format("EEEE, MMM d"))
+                Text(mainVM.selectedDate.format("EEEE, MMM d"))
                     .font(.system(.headline, design: .rounded))
                     .foregroundColor(.secondary)
             }
@@ -115,8 +118,13 @@ struct MainView:View
             SingleRingView(model: ringVM.deepRing, ringWidth: 40*sizer)
                 .frame(width: 136*sizer, height: 136*sizer)
         }
-        .onAppear {
-            Task { await ringVM.updateRings() }
+//        .onAppear {
+//            Task { await ringVM.updateRings() }
+//        }
+        .onChange(of: mainVM.selectedDate) { newDate in
+            Task {
+                await ringVM.updateRings(selectedDate: newDate)
+            }
         }
     }
     
@@ -135,6 +143,7 @@ struct MainView:View
                 withAnimation(.easeInOut(duration: 0.3)) {
                     mainVM.isDatePickerShowing.toggle()
                 }
+                print("date\(mainVM.selectedDate)")
             }
             .font(.headline)
             .foregroundColor(.white)
