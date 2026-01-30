@@ -30,7 +30,7 @@ class RingsViewModel:ObservableObject
         if access {
             let data = await sleepService.fetchSleepData()
             
-            withAnimation(.spring()) {
+            withAnimation(.spring().speed(0.5)) {
                 coreRing.percent = data.core * 1.81 //   (8h/percent of this type)
                 remRing.percent = data.rem * 4
                 deepRing.percent = data.deep * 5

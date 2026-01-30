@@ -11,7 +11,9 @@ import SwiftUI
 struct slepp_yApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView(viewModel: RingsViewModel(sleepService: HKSleepService()))
+            MainView(
+                ringVM: RingsViewModel(sleepService: HKSleepService()),
+                mainVM: MainViewModel())
         }
     }
 }
