@@ -19,9 +19,13 @@ struct MainView:View
             VStack(spacing: 30) {
                 headerView
                 
-                analyticsView
-                
-                Spacer()
+                ScrollView {
+                    analyticsView
+                    
+                    Spacer()
+                    
+                    DetectorView()
+                }
             }
             .padding()
             .blur(radius: mainVM.isDatePickerShowing ? 10 : 0)
@@ -89,6 +93,7 @@ struct MainView:View
             }
             
             Spacer()
+            
             Button() {
                 withAnimation(.easeInOut(duration: 0.3))
                 {
@@ -118,9 +123,7 @@ struct MainView:View
             SingleRingView(model: ringVM.deepRing, ringWidth: 40*sizer)
                 .frame(width: 136*sizer, height: 136*sizer)
         }
-//        .onAppear {
-//            Task { await ringVM.updateRings() }
-//        }
+
         .onChange(of: mainVM.selectedDate) { newDate in
             Task {
                 await ringVM.updateRings(selectedDate: newDate)
