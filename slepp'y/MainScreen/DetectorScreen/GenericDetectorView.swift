@@ -10,6 +10,7 @@ import SwiftUI
 struct GenericDetectorView: View {
     
     @StateObject var viewModel:DetectorViewModel
+    var selectedDate: Date
     var body: some View {
         VStack() {
             HStack(alignment: .top) {
@@ -103,16 +104,13 @@ struct GenericDetectorView: View {
             .disabled(!viewModel.isSectionActive)
             .animation(.easeInOut, value: viewModel.isSectionActive)
         }
+        .onChange(of: selectedDate) { newDate in
+            viewModel.datePickerSelectedDate = newDate
+        }
+        
         .padding()
         .background(Color(UIColor.secondarySystemBackground))
         .cornerRadius(20)
         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
     }
-}
-
-
-#Preview {
-    GenericDetectorView(viewModel: DetectorViewModel(
-        highlightDuration: 6,
-        iconName: "cup.and.heat.waves.fill"))
 }

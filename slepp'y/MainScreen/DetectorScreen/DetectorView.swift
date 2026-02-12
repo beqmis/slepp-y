@@ -7,6 +7,9 @@
 import SwiftUI
 
 struct DetectorView: View {
+    let date:Date
+    let storage:DetectorStorageServiceProtocol = DetectorStorageService()
+    
     var body: some View {
         ZStack()
         {
@@ -15,25 +18,33 @@ struct DetectorView: View {
                 GenericDetectorView(
                     viewModel: DetectorViewModel(
                         highlightDuration: 5.5,
-                        iconName: "cup.and.heat.waves.fill"))
+                        iconName: "cup.and.heat.waves.fill",
+                        storage: storage,
+                        date: date
+                    )
+                    ,selectedDate: date)
                 
                 GenericDetectorView(
                     viewModel: DetectorViewModel(
                         highlightDuration: 1.0,
-                        iconName: "figure.run"))
+                        iconName: "figure.run",
+                        storage: storage,
+                        date: date
+                    )
+                    ,selectedDate: date)
                 
                 GenericDetectorView(
                     viewModel: DetectorViewModel(
                         highlightDuration: 2.0,
-                        iconName: "wineglass"))
+                        iconName: "wineglass",
+                        storage: storage,
+                        date: date
+                    )
+                    ,selectedDate: date)
                 
             }
         }
         .ignoresSafeArea(.all)
     }
     
-}
-
-#Preview {
-    DetectorView()
 }

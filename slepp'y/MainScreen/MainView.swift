@@ -24,7 +24,7 @@ struct MainView:View
                     
                     Spacer()
                     
-                    DetectorView()
+                    DetectorView(date: mainVM.selectedDate)
                 }
             }
             .padding()
@@ -83,7 +83,7 @@ struct MainView:View
         HStack {
             VStack(alignment: .leading)
             {
-                Text("Анализ сна")
+                Text("Вика лучшая")
                     .font(.system(.title, design: .rounded))
                     .bold()
                 
