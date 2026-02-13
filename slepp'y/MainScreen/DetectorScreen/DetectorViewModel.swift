@@ -12,13 +12,15 @@ import Combine
 class DetectorViewModel: DetectorServiceProtocol, ObservableObject
 {
     @Published var selectedHour: CGFloat = 12.0
-//    {
-//        didSet { if !isLoading { saveData() }}
-//    }
     @Published var isSectionActive: Bool = false
-//    {
-//        didSet { if !isLoading { saveData() }}
-//    }
+    {
+        didSet
+        {
+            if !isSectionActive { selectedHour = 12.0}
+            if !isLoading { saveData() }
+        }
+    }
+
     @Published var datePickerSelectedDate:Date
     {
         didSet { fetchData() }
@@ -28,6 +30,7 @@ class DetectorViewModel: DetectorServiceProtocol, ObservableObject
     {
         didSet { if !isLoading && !isDragging { saveData() }}
     }
+    
     @Published var totalHours: Int = 24
     @Published var highlightDuration: CGFloat
     @Published var iconName: String
@@ -52,12 +55,15 @@ class DetectorViewModel: DetectorServiceProtocol, ObservableObject
         return String(format: "%02d:%02d", totalMin / 60, totalMin % 60)
     }
     
+    func loadData() {
+        fetchData()
+    }
+    
     private func fetchData() {
-        //почему не селф
         isLoading = true
         
-        self.selectedHour = storage.fetch(for: datePickerSelectedDate, key: "\(iconName)_hour") ?? 12.0
-        self.isSectionActive = storage.fetch(for: datePickerSelectedDate, key: "\(iconName)_isActive") ?? false
+        self.selectedHour =  storage.fetch(for: datePickerSelectedDate, key: "\(iconName)_hour") ?? 12.0
+        self.isSectionActive =  storage.fetch(for: datePickerSelectedDate, key: "\(iconName)_isActive") ?? false
         
         isLoading = false
     }

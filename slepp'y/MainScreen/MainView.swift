@@ -87,7 +87,7 @@ struct MainView:View
                     .font(.system(.title, design: .rounded))
                     .bold()
                 
-                Text(mainVM.selectedDate.format("EEEE, MMM d"))
+                Text(mainVM.selectedDate.formatWithShared())
                     .font(.system(.headline, design: .rounded))
                     .foregroundColor(.secondary)
             }

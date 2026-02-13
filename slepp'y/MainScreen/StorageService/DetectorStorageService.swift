@@ -17,9 +17,15 @@ class DetectorStorageService: DetectorStorageServiceProtocol {
     
     private let defaults = UserDefaults.standard
     
+    private static let keyFormatter:DateFormatter = {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        return df
+    }()
+    
     private func createKey(_ date: Date, _ key: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+
+        let formatter = Self.keyFormatter
         
         return "\(formatter.string(from: date))_\(key)"
     }

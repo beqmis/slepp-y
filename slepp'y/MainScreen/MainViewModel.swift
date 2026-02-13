@@ -26,9 +26,13 @@ extension Color {
 }
 
 extension Date {
-    func format(_ format: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        return formatter.string(from: self)
+    private static let sharedFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.dateFormat = "EEEE, MMM d"
+        return df
+    }()
+
+    func formatWithShared() -> String {
+        return Self.sharedFormatter.string(from: self)
     }
 }
