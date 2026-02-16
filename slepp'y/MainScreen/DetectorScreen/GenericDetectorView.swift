@@ -1,5 +1,5 @@
 //
-//  CoffeeDetectorView.swift
+//  GenericDetectorView.swift
 //  slepp'y
 //
 //  Created by Яков Демиденко on 06.02.2026.
@@ -17,7 +17,8 @@ struct GenericDetectorView: View {
             headerView
             
             GeometryReader { geometry in
-                let width = geometry.size.width
+                let endPadding: CGFloat = 20
+                let width = geometry.size.width - endPadding
                 let step = width / CGFloat(viewModel.totalHours)
                 
                 ZStack(alignment: .leading) {
@@ -77,18 +78,15 @@ struct GenericDetectorView: View {
             Rectangle()
                 .fill(Color.red.opacity(0.3))
                 .frame(width: step * viewModel.highlightDuration, height: 20)
-                .offset(x: step * viewModel.selectedHour)
+                .offset(x: (step * viewModel.selectedHour) + (step / 2))
             Rectangle()
                 .fill(Color.yellow.opacity(0.3))
                 .frame(width: step * viewModel.highlightDuration, height: 20)
-                .offset(x: step * (viewModel.selectedHour + viewModel.highlightDuration))
+                .offset(x: (step * (viewModel.selectedHour + viewModel.highlightDuration)) + (step / 2))
             Rectangle()
                 .fill(Color.green.opacity(0.3))
                 .frame(width: step * viewModel.highlightDuration, height: 20)
-                .offset(x: step * (
-                    viewModel.selectedHour +
-                    viewModel.highlightDuration +
-                    viewModel.highlightDuration))
+                .offset(x: (step * (viewModel.selectedHour + viewModel.highlightDuration * 2)) + (step / 2))
         }
     }
     
@@ -98,15 +96,26 @@ struct GenericDetectorView: View {
                 VStack(spacing: 4) {
                     Rectangle()
                         .fill(Color.gray)
-                        .frame(width: 1, height: hour % 6 == 0 ? 20 : 10)
-                    Text("\(hour)")
-                        .font(.caption2)
-                        .foregroundColor(.secondary)
+                        .frame(width: 1, height: hour % 6 == 0 ? 20 : (hour % 3 == 0 ? 15 : 8))
+                    
+                    if hour%6==0 {
+                        Text("\(hour)")
+                            .font(.caption2)
+                            .fixedSize()
+                            .foregroundColor(.secondary)
+                            .frame(width: 0)
+                    } else {
+                        Text("")
+                            .font(.caption2)
+                            .frame(height: 10)
+                    }
                 }
-                .frame(width: hour == viewModel.totalHours ? 1 : step, alignment: .leading)
+                .frame(width: step, alignment: .center)
             }
         }
         .frame(height: 40)
+        
+        //.offset(x: 0)
     }
     
     private func pinView(step:CGFloat) -> some View {

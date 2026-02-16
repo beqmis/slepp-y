@@ -25,6 +25,7 @@ struct MainView:View
                     Spacer()
                     
                     DetectorView(date: mainVM.selectedDate)
+                        .padding()
                 }
             }
             .padding()
