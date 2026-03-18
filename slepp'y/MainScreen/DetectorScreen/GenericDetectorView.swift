@@ -114,8 +114,6 @@ struct GenericDetectorView: View {
             }
         }
         .frame(height: 40)
-        
-        //.offset(x: 0)
     }
     
     private func pinView(step:CGFloat) -> some View {
@@ -129,7 +127,7 @@ struct GenericDetectorView: View {
                 .fill(Color.red)
                 .frame(width: 10, height: 10)
         }
-        .offset(x: (step * viewModel.selectedHour) - 12) // Центрируем pin
+        .offset(x: (step * viewModel.selectedHour) - 12 + (step / 2)) // Центрируем pin
         .gesture(
             DragGesture()
                 .onChanged { value in

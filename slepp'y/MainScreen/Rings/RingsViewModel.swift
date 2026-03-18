@@ -7,15 +7,19 @@
 import SwiftUI
 import Combine
 
+@MainActor
 class RingsViewModel:ObservableObject
 {
     @Published var coreRing:RingTypeModel
     @Published var deepRing:RingTypeModel
     @Published var remRing:RingTypeModel
     
-    private let sleepService:SleepServiceProtocol & SleepAuthorizationProtocol
+    @Published var inBedHours:String = "-"
+    @Published var inBedMin:String = "-"
     
-    init(sleepService:SleepServiceProtocol & SleepAuthorizationProtocol) {
+    private let sleepService:SleepServiceProtocol & SleepAuthorizationProtocol & SleepDurationProtocol
+    
+    init(sleepService:SleepServiceProtocol & SleepAuthorizationProtocol & SleepDurationProtocol) {
         self.sleepService = sleepService
         
         self.coreRing = RingTypeModel(percent: 0, backgroundColor: .blue.opacity(0.2), foregroundColor: .blue)
@@ -23,7 +27,6 @@ class RingsViewModel:ObservableObject
         self.deepRing = RingTypeModel(percent: 0, backgroundColor: .indigo.opacity(0.2), foregroundColor: .indigo)
     }
     
-    @MainActor
     func updateRings(selectedDate: Date) async {
         
         let access = await sleepService.requestAuthorization()
@@ -36,8 +39,13 @@ class RingsViewModel:ObservableObject
                 deepRing.percent = data.deep * 5
             }
         }
-        
-        
+    }
+    
+    func updateTime(selectedDate:Date) async
+    {
+        let data = await sleepService.fetchSleepDuration(endDate: selectedDate)
+        inBedHours = String(Int(data.0 / 60))
+        inBedMin = String(Int(data.0)%60)
     }
     
 }

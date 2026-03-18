@@ -22,7 +22,9 @@ struct MainView:View
                 ScrollView {
                     analyticsView
                     
-                    Spacer()
+                    //Spacer()
+                    sleepDurationView
+                        .padding()
                     
                     DetectorView(date: mainVM.selectedDate)
                         .padding()
@@ -42,6 +44,7 @@ struct MainView:View
         }
         .task {
             await ringVM.updateRings(selectedDate: mainVM.selectedDate)
+            await ringVM.updateTime(selectedDate: mainVM.selectedDate)
         }
     }
     
@@ -84,7 +87,7 @@ struct MainView:View
         HStack {
             VStack(alignment: .leading)
             {
-                Text("Вика лучшая")
+                Text("Анализ сна")
                     .font(.system(.title, design: .rounded))
                     .bold()
                 
@@ -128,6 +131,7 @@ struct MainView:View
         .onChange(of: mainVM.selectedDate) { newDate in
             Task {
                 await ringVM.updateRings(selectedDate: newDate)
+                await ringVM.updateTime(selectedDate: newDate)
             }
         }
     }
@@ -161,6 +165,42 @@ struct MainView:View
         .cornerRadius(25)
         .shadow(color: .black.opacity(0.2), radius: 20)
         .padding(.horizontal, 30)
+    }
+    
+    var sleepDurationView: some View {
+        HStack
+        {
+            VStack(alignment: .leading)
+            {
+                Text("Time in bed")
+                    .font(.system(size: 20, weight: .bold, design: .default))
+                HStack()
+                {
+                    Text(ringVM.inBedHours)
+                        .font(.system(size: 30, weight: .bold, design: .default))
+                    VStack
+                    {
+                        Spacer()
+                        Text("hr")
+                    }
+                    .padding(.bottom, 7)
+                    Text(ringVM.inBedMin)
+                        .font(.system(size: 30, weight: .bold, design: .default))
+                    VStack
+                    {
+                        Spacer()
+                        Text("min")
+                    }
+                    .padding(.bottom, 7)
+                }
+                
+            }
+            Spacer()
+        }
+        .padding()
+        .background(Color(UIColor.secondarySystemGroupedBackground))
+        .cornerRadius(9)
+        .shadow(color: .black.opacity(0.2), radius: 20)
     }
 }
 
